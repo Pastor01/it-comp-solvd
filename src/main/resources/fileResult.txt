@@ -1,0 +1,1 @@
+Number of ocurrences of each word: {love=1, other=1, for=1, do=1, believe=1, indulge=1, that=1, can=1, not=1, would=2, and=1, of=3, have=1, me=1, scarcely=1, sympathy=1, make=1, if=1, you=2, likes=2, all=1, which=2, living=1, imagine=1, in=1, satisfy=1, will=1, one=2, [,.?:;]=5, i=5, being=1, the=5, with=1, peace=1, rage=1, know=1, cannot=1}
