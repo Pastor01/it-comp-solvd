@@ -5,7 +5,7 @@ import java.util.List;
 public class ReflectionTest {
 
 	private int age;
-	private String name;
+	public String name;
 	private double cost;
 	private List<String> words;
 	

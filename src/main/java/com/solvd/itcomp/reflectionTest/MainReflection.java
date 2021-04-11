@@ -29,6 +29,13 @@ public class MainReflection {
 		
 		Method[] methods = a.getDeclaredMethods();
 		
+	
+		for(int i = 0; i< methods.length;i++) {
+			log.info("Modifiers: "+ methods[i]);
+			
+		}
+		
+		
 		try {
 			Field field = a.getField("name");
 			field.set(reflec, "Nicholas");
@@ -40,6 +47,9 @@ public class MainReflection {
 			
 			log.info("The fild age has been changed with: "+ field.get(reflec));
 			log.info("The modifier is: " +mod);
+			
+		
+			
 			
 		} catch (NoSuchFieldException e) {
 			log.error(e);

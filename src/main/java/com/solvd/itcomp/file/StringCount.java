@@ -2,6 +2,7 @@ package com.solvd.itcomp.file;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,20 +14,16 @@ public class StringCount {
 	public static void main(String[] args) throws IOException {
 		
 		String originalText = FileUtils.readFileToString(new File("src/main/resources/fileA.txt"),"UTF-8").toLowerCase();
-		
-		originalText=originalText.replace(",", " ,");
-		originalText= originalText.replace(".", " .");
-		//dont like this solution
-		
 		Map<String,Integer> result = new HashMap<String,Integer>();
 		
-		for(String s: StringUtils.split(originalText)) {
-			if(result.containsKey(s)) {
-				result.put(s, result.get(s)+1);
+		Arrays.stream(StringUtils.split(originalText," .,:;!?/\\\"")).forEach(word ->{
+			if(result.containsKey(word)) {
+				result.put(word, result.get(word)+1);
 			}else {
-				result.put(s, 1);
-			}
-		}
+				result.put(word, 1);
+			}	
+		});
+		
 		File f2=new File("src/main/resources/fileResult.txt");
 		f2.delete();
 		FileUtils.writeStringToFile(new File("src/main/resources/fileResult.txt"), "Number of ocurrences of each word: "+ result.toString(), "UTF-8");
