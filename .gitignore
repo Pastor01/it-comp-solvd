@@ -34,6 +34,10 @@ local.properties
 .recommenders
 .project
 
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+
 # Idea
 .idea/
 idea
