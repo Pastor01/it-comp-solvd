@@ -12,11 +12,19 @@ public class ConnectionPool {
 	private Logger log = LogManager.getLogger(ConnectionPool.class);
 	private int connectionCount;
 	private BlockingQueue<Connection> connections;
+	private static ConnectionPool instance;
 	public static final Integer MAX_POOL= 5;
 	
-	public ConnectionPool() {
+	private ConnectionPool() {
 		connections = new LinkedBlockingQueue<Connection>(MAX_POOL);
 		connectionCount = 0;
+	}
+	
+	public static ConnectionPool getInstance() {
+		if(instance == null) {
+			instance = new ConnectionPool();
+		}
+		return instance;
 	}
 	
 	public void initConnection() {
@@ -24,9 +32,11 @@ public class ConnectionPool {
 		connectionCount++;
 	}
 	
-	public synchronized Connection getConnection() throws InterruptedException {
-		if(connections.size()==0 && connectionCount < MAX_POOL) {
-			initConnection();
+	public Connection getConnection() throws InterruptedException {
+		synchronized(ConnectionPool.class) {
+			if(connections.size()==0 && connectionCount < MAX_POOL) {
+				initConnection();
+			}	
 		}
 		return connections.take();
 	}

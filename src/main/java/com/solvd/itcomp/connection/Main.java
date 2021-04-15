@@ -20,7 +20,7 @@ public class Main {
 		
 		Logger log = LogManager.getLogger(Main.class);
 		int POOL_SIZE=6;
-		ConnectionPool pool = new ConnectionPool();
+		ConnectionPool pool = ConnectionPool.getInstance();
 		
 		ExecutorService executorPool = new ThreadPoolExecutor(POOL_SIZE, POOL_SIZE, 10, TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
 	
@@ -86,7 +86,7 @@ public class Main {
 			log.error("Cannot get the value of myCompletable",e);
 		}
 		
-		log.info("Demo of \"ConnectionPool\" and \"Future\" and \"MyCompletableFuture\" use completed");
+		log.info("Demo of \"ConnectionPool\" and \"Future\" and \"CompletableFuture\" use completed");
 	}
 }
 
